@@ -1,0 +1,14 @@
+﻿
+Use[Bulky]
+select * From sys.tables
+select * From __EFMigrationsHistory
+
+select * From Categories
+
+--Delete from Categories where id = 1001
+
+Select Ident_current('categories')
+Select Ident_seed('categories')
+
+DBCC CHECKIDENT ('categories', reseed, 3)
+

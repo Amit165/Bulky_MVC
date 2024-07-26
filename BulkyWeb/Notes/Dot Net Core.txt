@@ -1,0 +1,82 @@
+﻿ASP Dot net Core
+-----------------
+What We learn ?
+----------------------------
+
+Fundamentals of ASP.NET core
+	MVC Application
+	Razor Pages
+	Client & Server Validations
+	Entity Framework Core and Repository Pattern
+	ViewBag, ViewData and TempData
+	DataTable,toaster,File Uploads, RichText Editor
+	Error Solving
+
+What We Build ?
+----------------------------
+	Application Book Web - Books for sale
+		-All the Products display
+	Login and Register 
+		Buttons
+		Register - Create a new account 
+			With general information 
+			Select Roles
+	Register and Login
+	Customer user can see all product details 
+	and see book details on click Details button
+	
+	Admin user can perform CRUD opertaion
+	to Create/Edit/Delete category and Product.
+
+.Net core Roadmap
+----------------------------
+Webforms(2002)
+.Net MVC(2009)
+	- Window OS based
+.Net Core 1(June 2016)
+	- Cross Platform version
+	- Cloud architecture based
+	- Robust
+.Net Core 2 (August 2018)
+.Net Core 7 (November 2022)
+.Net Core 8 (November 2023)
+
+ASP.Net Core - Why should we Learn and and Advantages ?
+--------------------------------------------------------
+Fast and Open source
+Cross platform
+(Not depend on IIS)
+Bulit in dependancy injection 
+Easy Updates
+Cloud Friendly
+Performance
+
+Resources :dotnetmastery.com
+
+Prerequisites
+--------------
+C# basics
+SQL
+
+
+Tools Needed
+-------------
+.Net 8
+Visual Studio 2022
+SSMS 2018
+
+ASP.NET Core Web App (Model-View-Controller)
+Project Name : BulyWeb
+Solution Name : Bulky
+Framework : 8.0
+
+
+
+
+
+
+
+
+
+
+
