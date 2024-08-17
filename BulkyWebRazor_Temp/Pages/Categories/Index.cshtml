@@ -1,5 +1,5 @@
 ﻿@page
-@model BulkyWebRazor_Temp.Pages.Categories.IndexModel
+@model BulkyBookWebRazor_Temp.Pages.Categories.IndexModel
 @{
     <h1>Category List</h1>
 }
@@ -33,7 +33,7 @@
                             <a asp-page="/Categories/edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                                 <i class="bi bi-pencil-square"></i>Edit
                             </a>
-                            <a asp-controller="/Categories/delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                            <a asp-page="/Categories/delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
                                 <i class="bi bi-trash-fill"></i>Delete
                             </a>
                         </div>

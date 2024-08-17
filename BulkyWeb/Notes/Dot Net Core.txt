@@ -70,6 +70,172 @@ Project Name : BulyWeb
 Solution Name : Bulky
 Framework : 8.0
 
+Mvc Core Layout 
+----------------
+Solution has multiple projrct
+To view Verison or access property group and Item group : 
+	Right click on Project name and Select Edit Project file.
+
+Dependancies
+	-Packages
+	-Other projects
+Properties > iissetting
+	- profiles 
+	-setting
+	-url
+	-Global vairables i.e enviroment variables
+WWWROOT folder
+	- host for the static files (css, js, lib, images)
+appsetting.json
+	- connectionstring
+	- secret keys
+program.cs (startup.cs)
+	- services
+	- request pipeline
+	- middleware
+Controllers
+Models
+Views
+
+MVC Architecture
+------------------
+Model - Represents the shape of the data
+View - Represents the user interface
+Controller - Handles the user request and acts as an interface between Model and view.
+
+Rounting in MVC 
+-----------------
+	URL pattern 
+	pattern: "{controller=Home}/{action=Index}/{id?}");
+
+_layout - Master page
+----------------------
+Header page
+Footer page
+Render Body
+css and javascript
+
+_ValidationScriptPartial
+Error
+
+* View start with underscore means Partial view
+
+_Viewstart = to konw the where application will start
+
+_ViewImports - global import file
+
+IActionResult - Custom class or interface for all return result type.
+
+===============================================================================
+------------------
+CRUD Operations
+------------------
+
+Create Class to create table in database
+------------
+Create Class 'Category' under models folder
+and Create property Id, Name, DisplayOrder.
+
+DataAnnotaions 
+--------------
+Use [Key] to represent any property as an Priamry Key.
+[Required] - Not Null
+
+To add Nuget packages
+---------------------
+Right click on Project name and Click Manage Nuget Packages
+
+	Microsoft.EntityFrameworkCore (Object-Database mapper)
+	Microsoft.EntityFrameworkCore.SqlServer (Sql Server Database Provider)
+	Microsoft.EntityFrameworkCore.Tools (Migration commands)
+
+Note : All the packages version should be same release of Dot Net Version.
+
+To check Package reference - go to Edit project file.
+
+To Add Connection String
+------------------------
+Under appsettings.json
+
+ "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=Bulky;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
+
+Basic Configuration For Entity Framework
+-----------------------------------------
+
+To established connection between Database and Entity Framework :
+	- Create Table in project with Name - Data
+	- Create Class - ApplicationDbContext.cs
+DbContext - Root class of EntityFrameworkCore
+
+Constructor to pass Connectionsting to Dbcontext (Base Class) :
+	 
+	 public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+                
+        }
+
+To Register ApplicationDbContext : (@Program.cs)
+	builder.Services.AddDbContext<ApplicationDbContext>(options => 
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+To connect Sql Server and create database
+	Tools > Nuget Package Manager > Package Manger Console
+	PM> update-database
+	[@SQL Server - dbo.__EFMigrationsHistory - under db tables]
+
+To Add Table in Database :
+	
+	ApplicationDbContext :public DbSet<Category> Categories { get; set; }
+	
+	PM> add-migration AddCategoryTableToDb
+	To Remove Migration : Remove-Migration
+
+	Note : Migration folder automatically created
+
+To applied Migration :
+	
+	PM> update-database
+
+------------------End of EFCore configuration----------------------	
+
+To perform CRUD operation on Category :
+--------------------------------------
+Add CategoryController (MVC Controller - Empty) and View
+[Tag-helpers]
+Add Category link to Layout page
+------------------------------------------
+	To seed entites or data to database using modelBuilder
+	e.g.
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+			{
+				modelBuilder.Entity<Category>().HasData(
+					new Category { Id = 1, Name = "Action", DisplayOrder = 1},
+					new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
+					new Category { Id = 3, Name = "History", DisplayOrder = 3 }
+					);
+			}
+
+	To add anything in database always use - add-migration (and update-database)
+------------------------------------------
+To Retrive category records and display them on Categroy view :
+
+To implement connection of ApplicationDbContext :
+
+		private readonly ApplicationDbContext _db;
+        public CategoryController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+To access Category List :
+
+	@Category index -  List<Category> objCategoryList = _db.Categories.ToList();
+
+To display Categroy List to View :
+
+	
+
 
 
 
