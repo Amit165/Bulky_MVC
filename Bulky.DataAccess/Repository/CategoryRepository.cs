@@ -21,10 +21,10 @@ namespace BulkyBook.DataAccess.Repository
         }
 
         //Move to Unit Of Work
-        //public void Save()
-        //{
-        //    _db.SaveChanges();
-        //}
+        public void Save()
+        {
+            _db.SaveChanges();
+        }
 
         public void Update(Category obj)
         {

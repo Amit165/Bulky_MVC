@@ -67,7 +67,7 @@ SSMS 2018
 
 ASP.NET Core Web App (Model-View-Controller)
 Project Name : BulyWeb
-Solution Name : Bulky
+Solution Name : BulkyBook
 Framework : 8.0
 
 Mvc Core Layout 
@@ -158,7 +158,7 @@ To Add Connection String
 Under appsettings.json
 
  "ConnectionStrings": {
-    "DefaultConnection": "Server=.;Database=Bulky;Trusted_Connection=True;TrustServerCertificate=True;"
+    "DefaultConnection": "Server=.;Database=BulkyBook;Trusted_Connection=True;TrustServerCertificate=True;"
   }
 
 Basic Configuration For Entity Framework
