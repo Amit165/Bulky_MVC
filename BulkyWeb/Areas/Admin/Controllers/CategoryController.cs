@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BulkyBook.DataAccess.Repository.IRepository;
 
-namespace BulkyBookWeb.Controllers
+namespace BulkyBookWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _UnitOfWork;
@@ -20,21 +21,21 @@ namespace BulkyBookWeb.Controllers
             return View(objCategoryList);
         }
 
-        public IActionResult Create() 
-        { 
+        public IActionResult Create()
+        {
             return View();
-        
+
         }
 
         [HttpPost]
         public IActionResult Create(Category obj)
-        {   
-            if(obj.Name == obj.DisplayOrder.ToString())
+        {
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("name", "The Display order cannot exactly match the Name");
             }
 
-            if (obj.Name!= null && obj.Name.ToLower() == "test")
+            if (obj.Name != null && obj.Name.ToLower() == "test")
             {
                 ModelState.AddModelError("", "Test is an invalid value");
             }
@@ -52,17 +53,17 @@ namespace BulkyBookWeb.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id == null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Category? categroyFromdb = _UnitOfWork.Category.Get(u=>u.Id == id);
+            Category? categroyFromdb = _UnitOfWork.Category.Get(u => u.Id == id);
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id == id);
             //Category? categoryFromDb2 = _db.Categories.Where(u=>u.Id == id).FirstOrDefault();
 
-            if (categroyFromdb == null) 
-            { 
-                return NotFound(); 
+            if (categroyFromdb == null)
+            {
+                return NotFound();
             }
             return View(categroyFromdb);
         }
@@ -70,7 +71,7 @@ namespace BulkyBookWeb.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-            
+
             if (ModelState.IsValid)
             {
                 _UnitOfWork.Category.Update(obj);
@@ -109,7 +110,7 @@ namespace BulkyBookWeb.Controllers
             _UnitOfWork.Category.Remove(obj);
             _UnitOfWork.Save();
             TempData["success"] = "Category Deleted successfully";
-            return RedirectToAction("Index");           
+            return RedirectToAction("Index");
         }
     }
 }
