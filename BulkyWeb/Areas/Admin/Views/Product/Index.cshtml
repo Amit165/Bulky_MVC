@@ -14,23 +14,36 @@
                 
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                <a asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i> Create New Product
                 </a>
             </div>
         </div>
-        <table class="table table-bordered table-striped">
+        <table id="tblData" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Title</th>                    
                     <th>ISBN</th>
                     <th>Price</th>
                     <th>Author</th>
-                    <th>Category</th>                    
+                    <th>Category</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+          </table>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/js/product.js"></script>    
+}
+
+@* <div class="container">
+    
+</div> *@             
+                    
+                    
+@*< tbody>
                 @foreach (var obj in Model)
                 {
                     <tr>
@@ -38,10 +51,10 @@
                         <td>@obj.ISBN</td>
                         <td>@obj.ListPrice</td>
                         <td>@obj.Author</td>                        
-                        <td></td>                        
+                        <td>@obj.Category.Name</td>                        
                         <td>
                             <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Product" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                                     <i class="bi bi-pencil-square"></i>Edit
                                 </a>
                                 <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
@@ -64,20 +77,12 @@
                                 </a>
                                 <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Price100" class="btn btn-danger mx-2">
                                     <i class="bi bi-trash-fill"></i>Delete
-                                </a> *@
+                                </a>
                             </div>
                         </td>
                     </tr>
                 }
-            </tbody>
-        </table>
-    </div>
-</div>
+            </tbody> *@
 
-<div class="container">
-    
-</div>
-
-                    
-                    
-                    
+            @* <link rel="stylesheet" href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" />
+            <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js" asp-append-version="true"></script> *@
