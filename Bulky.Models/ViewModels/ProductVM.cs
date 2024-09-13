@@ -11,6 +11,7 @@ namespace BulkyBook.Models.ViewModels
 {
     public class ProductVM
     {
+        [Required]
         public Product Product  { get; set; }
         [ValidateNever]        
         public required IEnumerable<SelectListItem> CategoryList { get; set; }

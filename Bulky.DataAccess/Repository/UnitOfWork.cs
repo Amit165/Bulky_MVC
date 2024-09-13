@@ -1,5 +1,6 @@
 ﻿using BulkyBook.DataAccess.Data;
 using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Models;
 using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,20 @@ namespace BulkyBook.DataAccess.Repository
     {
         private ApplicationDbContext _db;
 
+        public IApplicationUserRepository ApplicationUser { get; set; }
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Product{ get; private set; }
+        public ICompanyRepository Company { get; private set; }
+        public IShoppingCartRepository ShoppingCart { get; set; }
 
         public UnitOfWork(ApplicationDbContext db) 
         {
             _db = db;
             Category = new CategoryRepository(_db);
             Product = new ProductRepository(_db);
+            Company = new CompanyRepository(_db);
+            ShoppingCart = new ShoppingCartRepository(_db);
+            ApplicationUser = new ApplicationUserRepository(_db);
         }
                 
         public void Save()
