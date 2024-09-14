@@ -10,8 +10,8 @@ namespace BulkyBook.DataAccess.Repository.IRepository
     public interface IRepository<T> where T : class
     {
         //T - Category 
-        IEnumerable<T> GetAll(string? includeProperties = null);    //to populate the navigation property using .include.
-        T Get(Expression<Func<T, bool>> filter, string? includeProperties = null);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter=null, string? includeProperties = null);    //to populate the navigation property using .include.
+        T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false);
         void Add(T entity);
         //void Update(T entity);
         void Remove(T entity);
