@@ -72,7 +72,7 @@ Framework : 8.0
 
 Mvc Core Layout 
 ----------------
-Solution has multiple projrct
+Solution has multiple project
 To view Verison or access property group and Item group : 
 	Right click on Project name and Select Edit Project file.
 

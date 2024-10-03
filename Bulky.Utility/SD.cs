@@ -20,7 +20,8 @@ namespace BulkyBook.Utility
         public const string StatusCancelled = "Cencelled";
         public const string StatusRefunded = "Refunded";
 
-        public const string PaymentStatusPending = "Pending";
+        public const string PaymentStatusPending = "Pending";      
+
         public const string PaymentStatusApproved = "Approved";
         public const string PaymentStatusDelayedPayment = "ApprovedForDelyedPayment";
         public const string PaymentStatusRejected = "Rejected";

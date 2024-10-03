@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BulkyBook.DataAccess.Repository
 {
-    public class UnitOfWork : IUnitOfWork
+    public class unitOfWork : IUnitOfWork
     {
         private ApplicationDbContext _db;
 
@@ -22,7 +22,7 @@ namespace BulkyBook.DataAccess.Repository
         public IOrderHeaderRepository OrderHeader{ get; set; }
         public IOrderDetailRepository OrderDetail { get; set; }
 
-        public UnitOfWork(ApplicationDbContext db) 
+        public unitOfWork(ApplicationDbContext db) 
         {
             _db = db;
             Category = new CategoryRepository(_db);
